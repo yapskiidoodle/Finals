@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample CRUD</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        input[type=text],
+        input[type=number] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Sample CRUD: Add Product</h1>
+
+    <!-- Add Product Form -->
+    <input type="text" id="product_id" placeholder="Product ID (Max 20 Alphanumeric)" required style="display:none">
+    <input type="checkbox" name="is_set" id="isSet">
+    <label for="isSet">Set Product</label>
+    <input type="text" id="product_name" placeholder="Product Name (Max 20 Alphabets)" required>
+    <input type="text" id="description" placeholder="Description (Max 50 Alphanumeric)" required>
+    <input type="number" id="price" placeholder="Price (Numeric)">
+    <input type="file" id="image" accept="image/jpeg, image/png" required>
+    <input type="number" id="quantity" placeholder="Quantity">
+    <button onclick="addProduct()">Add Product</button>
+
+    <!-- Product List Table -->
+    <h2>Product List</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Product ID</th>
+                <th>Product Name</th>
+                <th>Description</th>
+                <th>Image</th> <!-- Add a column for images -->
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody id="product-list">
+            <!-- Rows will be dynamically added here -->
+        </tbody>
+    </table>
+
+    <script>
+        // Validate input based on constraints
+        function validate() {
+            // const product_id = document.getElementById('product_id').value;
+            const productName = document.getElementById('product_name').value;
+            const description = document.getElementById('description').value;
+            const price = document.getElementById('price').value;
+            const quantity = document.getElementById('quantity').value;
+
+            // if (!product_id.match(/^[a-zA-Z0-9]{1,20}$/)) {
+            //     alert("Product ID must be alphanumeric and up to 20 characters.");
+            //     return false;
+            // }
+
+            if (!productName.match(/^[a-zA-Z\s]{1,20}$/)) {
+                alert("Product Name must contain alphabets only and up to 20 characters.");
+                return false;
+            }
+
+            if (!description.match(/^[a-zA-Z0-9\s]{1,50}$/)) {
+                alert("Description must be alphanumeric and up to 50 characters.");
+                return false;
+            }
+
+            if (isNaN(price) || price <= 0) {
+                alert("Price must be a positive numeric value.");
+                return false;
+            }
+
+            if (isNaN(quantity) || quantity <= 0) {
+                alert("Quantity must be a positive integer.");
+                return false;
+            }
+
+            return true;
+        }
+
+        // Add product function
+        function addProduct() {
+            if (!validate()) return;
+
+            // Create Pattern for Product ID
+            let prepend;
+            let product_id;
+            const dateObj = new Date();
+
+            const isSet = document.querySelector("#isSet").checked;
+            prepend = isSet ? 'SET' : 'IND';
+
+            // Adjust for month and ensure proper count
+            let productCount;
+            isSet
+                ? productCount = document.querySelectorAll("td[data-isset='true']").length + 1
+                : productCount = document.querySelectorAll("td[data-isset='false']").length + 1;
+
+            product_id = prepend + dateObj.getFullYear() + (dateObj.getMonth() + 1).toString().padStart(2, '0') +
+                dateObj.getDate().toString().padStart(2, '0') +
+                String(productCount).padStart(4, '0');
+
+            console.log('Generated Product ID:', product_id); // Debug product_id
+
+            // Collect form inputs
+            const productName = document.getElementById('product_name').value;
+            const description = document.getElementById('description').value;
+            const price = parseFloat(document.getElementById('price').value);
+            const quantity = parseInt(document.getElementById('quantity').value);
+            const imageFile = document.getElementById('image').files[0]; // Get the file object
+
+            if (!imageFile) {
+                alert('Please select an image file.');
+                return;
+            }
+
+            // Create FormData object to send data including the image
+            const formData = new FormData();
+            formData.append('product_id', product_id);
+            formData.append('product_name', productName);
+            formData.append('description', description);
+            formData.append('price', price);
+            formData.append('quantity', quantity);
+            formData.append('image', imageFile); // Append the image file
+
+            // Log FormData content
+            for (let [key, value] of formData.entries()) {
+                console.log(`${key}: ${value}`);
+            }
+
+            fetch('http://127.0.0.1:3000/add-product', {
+                method: 'POST',
+                body: formData, // Send FormData object directly
+            })
+                .then(response => response.json())
+                .then(data => {
+                    // console.log("Response data:", data); // Log the response data
+                    if (data.message === 'Product added successfully') {
+                        alert('Product added successfully!');
+                        loadProducts(); // Refresh the product list
+                    } else {
+                        alert('Failed to add product!');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Error connecting to server!');
+                });
+        }
+
+        // Function to load products and display them in the table
+        // Function to load products and display them in the table
+        function loadProducts() {
+            fetch('http://127.0.0.1:3000/get-products')
+                .then(response => response.json())
+                .then(products => {
+                    // console.log(products); // Debug the data fetched from the API
+                    const productList = document.getElementById('product-list');
+                    productList.innerHTML = ''; // Clear previous data
+
+                    products.forEach(product => {
+                        const row = document.createElement('tr');
+                        let isSet = product.Product_ID.substring(0, 3) == 'SET';
+                        row.innerHTML = `
+                    <td data-isset='${isSet}'>${product.Product_ID}</td>
+                    <td>${product.Product_Name}</td>
+                    <td>${product.Description}</td>
+                    <td>${product.Price}</td>
+                    <td>${product.Quantity}</td>
+                    <td><img src="${product.Image}" alt="${product.Product_Name}" style="width: 100px; height: auto;"></td>
+                `;
+                        productList.appendChild(row);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error loading products:', error);
+                });
+        }
+        // Load products on page load
+        window.onload = loadProducts;
+
+    </script>
+</body>
+
+</html>
