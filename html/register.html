@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="../css/login.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="shortcut icon" href="logo 1.png" type="image/x-icon">
+</head>
+
+<body style="background-color: #fffded" id="home">
+    <header class="container-fluid"
+        style="background-color: #fffded; height: 15vh; position: fixed; width: 100%; box-shadow: 0px 5px 20px rgb(203, 200, 200); z-index: 3; top: 0; padding: 1% 0px;">
+        <table style="width: 100%;">
+            <tr>
+                <td>
+                    <a href="../index.html">
+                        <div class="montserrat" style="padding-left: 2%;">
+                            Pastry Palette
+                        </div>
+                    </a>
+                </td>
+                
+                <td style="text-align: left;">
+                    <a href="#menu_pick" style="color:#54adc4; ">
+                        <a href="../index.html"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35"
+                                fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0z" />
+                                <path fill-rule="evenodd"
+                                    d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z" />
+                            </svg></a>
+                    </a>
+                </td>
+
+            </tr>
+        </table>
+    </header>
+    <div class="text-center">
+        <div class="montserrat" style="color:  #fffded; margin-top:12%">
+            Welcome to Pastry Pallete!
+        </div>
+    </div>
+    <div class="container" style="width: 30%; margin-top: 3%;margin-bottom: 5%; background-color: rgb(252,252,236,0.7); border-radius: 10px; ">
+        <div class="row" style="padding: 20px 0px;">
+                <!-- Login Section -->
+                <div class="form-container" id="loginSection">
+                    <h2 class="montserrat text-center mb-4" style="font-size: 36px; color: #e53b60;">Create an Account</h2>
+                    <form id="loginForm" onsubmit="event.preventDefault(); processLogin();" >
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div>
+                                    <label for="first name" class="montserrat form-label" style="font-size: 20px; font-style: italic;">First Name</label>
+                                    <input type="text" id="firstName" name="firstName" class="form-control"
+                                        placeholder="First Name" required>
+                                </div>
+                                
+                            </div>
+                            <div class="col-md-6">
+                                <div>
+                                    <label for="last name" class="montserrat form-label" style="font-size: 20px; font-style: italic;">Last Name</label>
+                                    <input type="text" id="firstName" name="lastName" class="form-control"
+                                        placeholder="Last Name" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 8%;">
+                            <div class="col-md-12">
+                                <div>
+                                    <label for="Birthday" class="montserrat form-label" style="font-size: 20px; font-style: italic;">Birthday</label>
+                                    <input type="date" id="birthday" name="loginEmail" class="form-control"
+                                        placeholder="Birthday" required>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div style="margin-top: 8%;">
+                            <label for="Email" class="montserrat form-label" style="font-size: 20px; font-style: italic;">Contact Number</label>
+                            <input type="number" id="contact" name="loginEmail" class="form-control" maxlength="11"
+                                placeholder="(09)" required>
+                        </div>
+
+                        <div style="margin-top: 8%;">
+                            <label for="Email" class="montserrat form-label" style="font-size: 20px; font-style: italic;">Email</label>
+                            <input type="email" id="username" name="loginEmail" class="form-control"
+                                placeholder="Enter your Email" required>
+                        </div>
+                        <div style="margin-top: 8%;">
+                            <label for="password" class="montserrat form-label" style="font-size: 20px; font-style: italic;">Password</label>
+                            <input type="password" id="password" name="loginPassword" class="form-control"
+                                placeholder="Enter your password" required>
+                        </div>
+                        <div style="text-align: center;">
+                            <a href="../index.html"><button type="submit" class=" submit  btn w-100 rounded-pill" style="margin-top: 5%; padding: 2%; margin-bottom: 20px; background-color:#e53b60;color: #fffded;">Register</button>
+                            </a>
+                            </div>
+                        <p id="statusMessage" class="mt-3 text-center"></p>
+                    </form>
+                  
+                    
+                </div>
+            </div>
+        
+    </div>
+    
+
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+body {
+    background-image: url('../pastry_palette/image/Login.png');
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-position: center; 
+    background-attachment: fixed;
+}
+.montserrat {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-size: 45px;
+    font-weight: 700;
+    font-style: normal;
+    color:#54adc4;
+   
+  }
+
+  .show-cart li {
+    display: flex;
+  }
+td {
+ 
+    a{
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: 700;
+        color:#54adc4;
+        
+    }
+}
+
+
+
