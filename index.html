@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="design.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="shortcut icon" href="logo 1.png" type="image/x-icon">
+
+    <title>Pastry Palette</title>
+</head>
+
+<body style="background-color: #fffded" id="home">
+    <header class="container-fluid"
+        style="background-color: #fffded; height: 15vh; position: fixed; width: 100%; box-shadow: 0px 5px 20px rgb(203, 200, 200); z-index: 3; top: 0; padding: 1% 0px;">
+        <table style="width: 100%;">
+            <tr>
+                <td>
+                    <a href="">
+                        <div class="montserrat" style="padding-left: 2%;">
+                            Pastry Palette
+                        </div>
+                    </a>
+                </td>
+                <td style="text-align: left;">
+                    <a href="#home">Home</a>
+                </td>
+                <td style="text-align: left;">
+                    <a href="#menu_pick">Menu</a>
+                </td>
+                <td style="text-align: left;">
+                    <button class="cart" type="button" data-bs-toggle="modal" data-bs-target="#cart">
+                        Cart (<span class="total-count"></span>)
+                    </button>
+                </td>
+                <td style="text-align: left;" id="loginSection">
+                    <a href="html/login.html" id="loginLink">Login</a>
+                </td>
+                <td style="text-align: left;" id="accountSection" hidden>
+                    <div style="position: relative; display: inline-block;">
+                        <a href="#" id="accountName" style="text-decoration: none; color: #54adc4; font-weight: bold;"
+                            onclick="toggleLogoutMenu()">Jericho Yap</a>
+                        <div id="logoutMenu"
+                            style="display: none; position: absolute; right: 0; top: 100%; background-color: #fff; border: 1px solid #ccc; box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1); padding: 10px; border-radius: 5px; z-index: 10;">
+                            <button onclick="logout()"
+                                style="background-color: #e53b60; color: #fffded; border: none; padding: 8px 15px; font-size: 14px; border-radius: 5px; cursor: pointer;">Logout</button>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </header>
+
+    <script>
+
+    </script>
+
+
+    <div class="container-fluid" style=" background-color: #fffded; z-index: 0;">
+        <div style="margin-top: 100vh;">
+            <img src="pastry_palette/image/est.png" alt="" class="img-fluid">
+        </div>
+    </div>
+    <div id="menu_pick"></div>
+    <div class="container-fluid" style=" background-color:#94dbed; z-index: 0; padding: 5%;">
+        <div class="container">
+            <div class="montserrat" style="padding-left: 2%; font-size: 40px; color: #e53b60; padding: 3%;">
+                Palette of Joy
+                <div class="lead" style="font-weight: 700; color: #fffded;">
+                    Handcrafted Pastries Set for Every Holiday
+                </div>
+            </div>
+
+
+            <div class="slider-container" style=" width: 90%;">
+
+                <button class="slider-button" id="prev-btn-set">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor"
+                        class="bi bi-chevron-compact-left" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M9.224 1.553a.5.5 0 0 1 .223.67L6.56 8l2.888 5.776a.5.5 0 1 1-.894.448l-3-6a.5.5 0 0 1 0-.448l3-6a.5.5 0 0 1 .67-.223" />
+                    </svg>
+                </button>
+
+
+                <div class="menu" id="menu-slider-set">
+
+
+
+                    <div id="product-list-set" class="menu-item-set">
+                       
+                    </div>
+
+                </div>
+
+                <button class="slider-button" id="next-btn-set">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor"
+                        class="bi bi-chevron-compact-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671" />
+                    </svg>
+                </button>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="container-fluid" style=" background-color:#fffded; z-index: 0;padding: 5%;">
+        <div class="container">
+            <div class="montserrat" style="padding-left: 2%; font-size: 40px; color: #e53b60; padding: 3%;">
+                Canvas Classics
+                <div class="lead" style="font-weight: 700; color: #54adc4">
+                    A Spectrum of Freshly Made Classics
+                </div>
+            </div>
+
+
+            <div class="slider-container" style=" width: 90%; ">
+
+                <button class="slider-button" id="prev-btn-classic">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor"
+                        class="bi bi-chevron-compact-left" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M9.224 1.553a.5.5 0 0 1 .223.67L6.56 8l2.888 5.776a.5.5 0 1 1-.894.448l-3-6a.5.5 0 0 1 0-.448l3-6a.5.5 0 0 1 .67-.223" />
+                    </svg>
+                </button>
+
+
+                <div  class="menu" id="menu-slider-classic">
+
+                    <div  id="product-list-classic">
+
+                    <script>
+                        function loadProducts() {
+                            fetch('http://127.0.0.1:3000/get-products')
+                                .then(response => response.json())
+                                .then(products => {
+                                    let filteredProductsClassic = products.filter(product => product.Product_ID.substring(0, 3) === 'IND');
+
+                                    const productList = document.getElementById('product-list-classic');
+                                    productList.innerHTML = ''; // Clear previous data
+
+
+                                    filteredProductsClassic.forEach(product => {
+                                        const row = document.createElement('div');
+                                        row.id='menu-item-classic'
+                                        row.innerHTML = `
+                        <div style="text-align:center;background-color:#54adc4;bordr-radius:10px;padding:3%;width;300px">
+
+                        <img src="pastry_palette/${product.Image}" alt="${product.Product_Name}">
+                        <div class="lead" style="font-weight: 600; color:#fffded; padding-top: 5px;">
+                            ${product.Product_Name}<br>${product.Description}
+                        </div>
+                        <div style="color: #e53b60; font-weight: 600;font-size: larger;">
+                            ₱${product.Price}
+                        </div>
+                        <div style="text-align: right;">
+                            <a href="#" data-name="${product.Product_Name}" data-price="${product.Price}" class="add-to-cart btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-basket2-fill" viewBox="0 0 16 16" style="color:#e53b60;margin-bottom:5px;">
+                                    <path d="M5.929 1.757a.5.5 0 1 0-.858-.514L2.217 6H.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h.623l1.844 6.456A.75.75 0 0 0 3.69 15h8.622a.75.75 0 0 0 .722-.544L14.877 8h.623a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1.717L10.93 1.243a.5.5 0 1 0-.858.514L12.617 6H3.383zM4 10a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0zm3 0a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0zm4-1a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1"/>
+                                </svg>
+                            </a>
+                        </div>
+                        </div>
+                        
+                    `;
+                                        productList.appendChild(row);
+                                    });
+                                })
+                                .catch(error => {
+                                    console.error('Error loading products:', error);
+                                });
+                            fetch('http://127.0.0.1:3000/get-products')
+                                .then(response => response.json())
+                                .then(products => {
+                                    let filteredProductsSet = products.filter(product => product.Product_ID.substring(0, 3) === 'SET');
+
+                                    const productList = document.getElementById('product-list-set');
+                                    productList.innerHTML = ''; // Clear previous data
+
+
+                                    filteredProductsSet.forEach(product => {
+                                        const row = document.createElement('div');
+                                        row.style.textAlign = 'center';
+                                        row.style.background = '#fffded';
+                                        row.style.borderRadius = '10px';
+                                        row.style.padding = '3%';
+                                        row.style.width = '300px';
+
+                                        row.innerHTML = `
+                            <img src="pastry_palette/${product.Image}"" alt="${product.Product_Name}">
+                            <div class="lead" style="font-weight: 600; color:#54adc4; padding-top: 5px;">${product.Product_Name}
+                                <br>${product.Description}
+                            </div>
+                            <div style="color: #e53b60; font-weight: 600;font-size: larger;">${product.Price}</div>
+                            <div style="text-align: right;">
+
+                                <a href="#" data-name="${product.Product_Name}" data-price="${product.Price}" class="add-to-cart btn ">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                                        class="bi bi-basket2-fill" viewBox="0 0 16 16"
+                                        style="color:#e53b60;margin-bottom:5px;">
+                                        <path
+                                            d="M5.929 1.757a.5.5 0 1 0-.858-.514L2.217 6H.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h.623l1.844 6.456A.75.75 0 0 0 3.69 15h8.622a.75.75 0 0 0 .722-.544L14.877 8h.623a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1.717L10.93 1.243a.5.5 0 1 0-.858.514L12.617 6H3.383zM4 10a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0zm3 0a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0zm4-1a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1" />
+                                    </svg>
+                                </a>
+                            </div>
+                    `;
+                                        productList.appendChild(row);
+                                    });
+                                })
+                                .catch(error => {
+                                    console.error('Error loading products:', error);
+                                });
+
+                        }
+
+
+
+                        // Call the function to load products when the page loads
+                        loadProducts();
+                    </script>
+                </div>
+                <button class="slider-button" id="next-btn-classic">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor"
+                        class="bi bi-chevron-compact-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671" />
+                    </svg>
+                </button>
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+
+
+
+    <!-- Modal for Cart -->
+    <div class="modal fade" id="cart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Cart</h5>
+                    <div style="text-align: right; padding-left: 90%;">
+                        <button type="button" class="close-2 btn btn-secondary" data-bs-dismiss="modal">X</button>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <table class="show-cart table"></table>
+                    <div class="cart-total">
+                        <div>Total price: ₱<span class="total-cart"></span></div>
+
+                        <div style="margin-top: 15px;">
+                            Discount:
+                            <span>
+                                <input type="text" class="item-discout form-control" placeholder="ITCE">
+                                <button type="button" class="btn" id="apply-discount" style="margin-top: 
+                            15px;border: none;
+                            background-color: #54adc4; 
+                            color: #ffffff;
+                            font-weight: 700;
+                            text-decoration:none;">Add Discount Code</button>
+                            </span>
+                        </div>
+                    </div>
+                    <div style="margin-top: 15px; margin: 20px 0px 20px px;" class="payment">
+                        <label for="payment-method" style="font-weight: bold;">
+                            <h4 style="margin-top: 25px ">Select Payment Method:</h4>
+                        </label><br>
+                        <input type="radio" id="gcash" name="payment-method" value="Gcash">
+                        <label for="gcash">Gcash</label><br>
+                        <input type="radio" id="paymaya" name="payment-method" value="Paymaya">
+                        <label for="paymaya">Paymaya</label>
+                    </div>
+
+                    <!-- Order Summary -->
+                    <div id="order-summary" style="display: none;">
+                        <div id="order-details"></div>
+                        <div style="text-align: right;">
+                            <button type="button" class="btn btn-secondary" id="close-summary" style="margin-top: 15px;"
+                                data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                    <button class="clear-cart btn" style="border: none;
+                        padding:7px;
+                       background-color: #e53b60;
+                       color: #fffff0;">Clear Cart</button>
+                    <button type="button" class="btn btn-primary" id="order-now" style="border: none;
+                background-color: #54adc4; 
+                color: #ffffff;
+                font-weight: 700;
+                text-decoration:none;">Order Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid mb-5" style=" background-color: #94dbed; z-index: 0; height: 125vh; padding: 0% 5%;">
+        <div class="montserrat" style="padding-left: 2%; font-size: 40px; color: #e53b60; padding: 3%;">
+            The Team
+        </div>
+        <div class="row" style="padding: 0% 5%;">
+            <div class="col-md-3" style=" width: auto; ">
+                <img src="homepagePics/5.png" alt="" width="160" height="160" class="img rounded-circle">
+            </div>
+
+            <div class="col-md-3" style="margin-top: 3%; width: 38%">
+                <div class="lead" style="font-weight: 700; color: #fffded; font-size: 23px;">
+                    Crisostomo, Allyza Kate F.
+                    <a href="" style="text-decoration:none;">
+                        <div class="lead" style="font-weight: 700; color: #fffded; font-size: 16px;">
+                            @crisostomo.allyakate@ue.edu.ph
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+            <div class="col-md-3" style=" width: auto; ">
+                <img src="homepagePics/6.png" alt="" width="160" height="160" class="img rounded-circle">
+            </div>
+
+            <div class="col-md-3" style="margin-top: 3%; width: 30%">
+                <div class="lead" style="font-weight: 700; color: #fffded; font-size: 23px;">
+                    Yap, Jericho Matthew B.
+
+                </div>
+                <a href="" style="text-decoration:none;">
+                    <div class="lead" style="font-weight: 700; color: #fffded; font-size: 16px;">
+                        @yap.jerichomatthew@ue.edu.ph
+                    </div>
+                </a>
+
+            </div>
+            <div class="display-3 text-center mt-5" style="font-weight: 700; color: #fffded;">
+                Contact us
+            </div>
+            <div class="container" style="width: 60%; margin-top: 5%;">
+                <form>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address:</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                            placeholder="Enter email">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                            else.</small>
+                        <br>
+                        <br>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputSuggestion">Feedback:</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary mt-3" style="border: none;
+                background-color: #54adc4; 
+                color: #ffffff;
+                font-weight: 700;
+                text-decoration:none;">Submit</button>
+                </form>
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+
+
+    <script>
+        // Variables to track the current slide position for each slider
+        let currentSetSlide = 0;
+        let currentClassicSlide = 0;
+    
+        // Function to move to the next slide in the 'SET' slider
+        function nextSetSlide() {
+            const setSlider = document.getElementById('menu-slider-set');
+            const items = document.querySelectorAll('.menu-item-set');
+            const totalItems = items.length;
+            
+            if (currentSetSlide < totalItems - 1) {
+                currentSetSlide++;
+                setSlider.style.transform = `translateX(-${currentSetSlide * 320}px)`; // Move the slider left
+            }
+        }
+    
+        // Function to move to the previous slide in the 'SET' slider
+        function prevSetSlide() {
+            const setSlider = document.getElementById('menu-slider-set');
+            
+            if (currentSetSlide > 0) {
+                currentSetSlide--;
+                setSlider.style.transform = `translateX(-${currentSetSlide * 320}px)`; // Move the slider right
+            }
+        }
+    
+        // Function to move to the next slide in the 'CLASSIC' slider
+        function nextClassicSlide() {
+            const classicSlider = document.getElementById('menu-slider-classic');
+            const items = document.querySelectorAll('.menu-item-classic');
+            const totalItems = items.length;
+    
+            if (currentClassicSlide < totalItems - 1) {
+                currentClassicSlide++;
+                classicSlider.style.transform = `translateX(-${currentClassicSlide * 320}px)`; // Move the slider left
+            }
+        }
+    
+        // Function to move to the previous slide in the 'CLASSIC' slider
+        function prevClassicSlide() {
+            const classicSlider = document.getElementById('menu-slider-classic');
+            
+            if (currentClassicSlide > 0) {
+                currentClassicSlide--;
+                classicSlider.style.transform = `translateX(-${currentClassicSlide * 320}px)`; // Move the slider right
+            }
+        }
+    
+        // Event listeners for slider buttons
+        document.getElementById('next-btn-set').addEventListener('click', nextSetSlide);
+        document.getElementById('prev-btn-set').addEventListener('click', prevSetSlide);
+        document.getElementById('next-btn-classic').addEventListener('click', nextClassicSlide);
+        document.getElementById('prev-btn-classic').addEventListener('click', prevClassicSlide);
+    </script>
+    
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="functions.js"></script>
+
+</body>
+
+</html>

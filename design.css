@@ -1,0 +1,147 @@
+body {
+    background-image: url('pastry_palette/image/Pastry\ Palette.png');
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-position: center; 
+    background-attachment: fixed;
+}
+
+.montserrat {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-size: 45px;
+    font-weight: 700;
+    font-style: normal;
+    color:#54adc4;
+   
+  }
+
+  .show-cart li {
+    display: flex;
+  }
+td {
+ 
+    a{
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: 700;
+        color:#54adc4;
+        
+    }
+    .cart {
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: 700;
+        color:#54adc4;
+        border: none;
+        background-color:  #fffded;
+    }
+}
+
+
+
+.menu {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    margin: 0%;
+   
+}
+
+
+.slider-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 1200px; /* Adjust as needed */
+    margin: auto; /* Center the slider */
+    display: flex;
+    align-items: center;
+}
+
+.menu-item-set {
+    flex: 0 0 auto;
+    margin: 10px;
+   
+    img  {
+        height: 250px;
+        width: 250px;
+    }
+}
+.menu-item-classic {
+    flex: 0 0 auto;
+    margin: 10px;
+   
+    img  {
+        height: 250px;
+        width: 250px;
+    }
+}
+
+.menu-item-classic {
+    /*dito for buttons*/
+    a {
+        border: none;
+        background: #fffded;
+    
+    }
+    a:hover {
+        background: #ffffff;
+    }
+}
+
+.menu-item-set {
+    /*dito for buttons*/
+    a {
+        border: none;
+        background: #54adc4;
+    }
+    a:hover {
+        border: none;
+        background-color: #67daf7;
+    }
+}
+
+.add  {
+    border: none;
+    background-color: #54adc4;  
+}
+
+
+
+
+
+
+.slider-button {
+    position: absolute;
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%);
+    background-color: #54aec400; /* Transparent background */
+    height: 100%; /* Full height for easy clicking */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    z-index: 2; /* Make sure buttons are above other elements */
+}
+
+#prev-btn-set,
+#prev-btn-classic {
+    left: -10px; /* Move the button a bit more to the left */
+}
+
+#next-btn-set,
+#next-btn-classic {
+    right: -10px; /* Move the button a bit more to the right */
+}
+
+/* Add hover effect for better visual feedback */
+.slider-button:hover {
+    background-color: #3a88a04d; /* Light overlay background on hover */
+    transition: all ease-in-out 0.1s;
+}
+
+#logoutMenu button:hover {
+    background-color: #d43756;
+    transition: background-color 0.2s ease;
+}
+
